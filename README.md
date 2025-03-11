@@ -69,5 +69,5 @@ After execution, check your GitHub profile to confirm the repository was created
 This script is open-source under the **MIT License**.
 
 ## Author
-**[Hannah.E](https://github.com/Hannah-VAGUE)**  🚀✨
+**[Hannah.VAGUE](https://github.com/Hannah-VAGUE)**  🚀✨
 
