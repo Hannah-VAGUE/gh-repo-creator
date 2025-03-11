@@ -1,29 +1,73 @@
-# The script is a simple shell script that creates a new GitHub repository with a README.md file. It uses the GitHub CLI to create the repository and push the local repository to the remote repository. 
- 
-# The script takes the repository name as an argument or prompts the user to enter the repository name. It then creates a README.md file with the repository name, initializes a local git repository, and creates a GitHub repository using the GitHub CLI. 
+# GitHub Repository Creator Script ✨
 
-# The script then sets up the remote URL for the git repository and pushes the local repository to the remote repository. 
+## Overview
+This script automates the process of creating a new GitHub repository using the command line. It initializes a local Git repository, creates a corresponding remote repository on GitHub, and sets up the connection—all in one go!
 
-# To use the script, save it to a file (e.g., newGhRepo.sh) and make it executable by running: 
-chmod +x newGhRepo.sh
+## Features
+- Creates a new GitHub repository directly from your terminal.
+- Initializes a local Git repository with a README file.
+- Adds and commits initial files.
+- Connects the local repo to GitHub and pushes the first commit.
+- Supports both SSH and HTTPS remote URLs.
 
-# Then, you can run the script with the repository name as an argument: 
- ./newGhRepo.sh my-new-repo
- 
-# The script will create a new GitHub repository with the name my-new-repo and push the local repository to the remote repository. 
+## Prerequisites
+Before running the script, ensure you have:
 
-# You can also set the GITHUB_USERNAME and GITHUB_TOKEN variables in the script if you don't have them set in the environment. 
+1. **Git installed** – [Download Git](https://git-scm.com/downloads)
+2. **GitHub CLI (`gh`) installed** – [Install GitHub CLI](https://cli.github.com/)
+3. **Authenticated GitHub CLI** – Run the following command and follow the login steps:
+   ```sh
+   gh auth login
+   ```
+4. **GitHub Personal Access Token (if using HTTPS)** – [Generate Token](https://github.com/settings/tokens)
+   - Export your token before running the script:
+   ```sh
+   export GITHUB_TOKEN="your_personal_access_token"
+   ```
+5. **SSH Keys (if using SSH)** – Ensure your SSH key is generated and added to GitHub:
+   ```sh
+   ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+   eval "$(ssh-agent -s)"
+   ssh-add ~/.ssh/id_rsa
+   ```
+   Add the public key to GitHub under **Settings > SSH and GPG keys**.
 
-# Conclusion 
-# In this article, we have explored how to create a new GitHub repository using the GitHub CLI and a shell script. We have seen how to use the GitHub CLI to create a new repository, set up a local git repository, and push the local repository to the remote repository. 
+## Installation & Usage
+### 1️⃣ Clone the Script
+```sh
+git clone https://github.com/Hannah-VAGUE/gh-repo-creator.git
+cd gh-repo-creator
+```
 
-# By using the GitHub CLI and a shell script, you can automate the process of creating new GitHub repositories and save time when setting up new projects. 
+### 2️⃣ Run the Script
+Using SSH:
+```sh
+./newGhRepo.sh <repository-name>
+```
+Or using HTTPS:
+```sh
+GIT_URL_TYPE="https" ./newGhRepo.sh <repository-name>
+```
+If no repository name is provided, the script will prompt you to enter one.
 
-# If you have any questions or feedback, please let me know in the comments below. 
- Happy coding! 
- 
- 
- Hannah is a full-stack developer, tech writer, and coding instructor. She has several years of experience working with tech companies and has written articles for notable tech-related blogs. She is also the founder of the coding and education site  MakeUseOfCode. 
- Learn the landscape of Data Visualization tools in Python - work with   Seaborn ,  Plotly , and  Bokeh ,   and excel in  Matplotlib ! 
- From simple plot types to ridge plots, surface plots and spectrograms -   understand your data and learn to draw conclusions from it.
-# TestRepo
+### 3️⃣ Verify the Repository
+After execution, check your GitHub profile to confirm the repository was created:
+[https://github.com/<your_profile>](https://github.com/<your_profile>)
+
+## Troubleshooting
+### "Unable to add remote 'origin'"
+- Ensure you're authenticated with `gh auth login`.
+- If using SSH, verify that your SSH key is added to GitHub (`~/.ssh/id_rsa.pub`).
+- If using HTTPS, confirm your GitHub personal access token is set and exported.
+
+### "Remote repository creation failed"
+- Ensure your GitHub account allows repository creation.
+- Check if the repo name is already in use.
+- Try running `gh repo create <repo-name>` manually to debug.
+
+## License
+This script is open-source under the **MIT License**.
+
+## Author
+**[Hannah.E](https://github.com/Hannah-VAGUE)**  🚀✨
+
